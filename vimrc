@@ -3,12 +3,14 @@
 
 " set colorscheme
 if (&term == 'xterm' || &term =~? '^screen')
-        " On my machine, I use Konsole with 256 color support
-        set t_Co=256
-        let g:CSApprox_konsole = 1
+  " On my machine, I use Konsole with 256 color support
+  set t_Co=256
+  let g:CSApprox_konsole = 1
 endif
 
+" set syntax highlighting if we have color or gui 
 if &t_Co >= 256 || has('gui_running')
+  syntax on
   colorscheme molokai
 endif
 
