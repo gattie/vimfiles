@@ -1,3 +1,4 @@
+set backspace=indent,eol,start
 " map leader (defaults to \)
 " let mapleader = ','
 
@@ -54,5 +55,6 @@ set shellcmdflag=-lc  " set the ! shell to be a login shell to get at functions 
 " settings requiring the latest vim
 if version >= 703
   set colorcolumn=80    " highlight the 80th column
+  highlight ColorColumn ctermbg=black guibg=black
   set listchars=nbsp:¶,eol:¬,tab:>-,extends:»,precedes:«,trail:. " characters to use for 'specical' characters and non-printables
 endif
