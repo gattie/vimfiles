@@ -12,7 +12,7 @@ endif
 " set syntax highlighting if we have color or gui 
 if &t_Co >= 256 || has('gui_running')
   syntax on
-  colorscheme molokai
+  colorscheme BusyBee
 endif
 
 " pathogen is a plugin for managing plugins as bundles
