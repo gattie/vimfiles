@@ -1,6 +1,4 @@
 set backspace=indent,eol,start
-" map leader (defaults to \)
-" let mapleader = ','
 
 " set colorscheme
 if (&term == 'xterm' || &term =~? '^screen')
@@ -12,7 +10,7 @@ endif
 " set syntax highlighting if we have color or gui 
 if &t_Co >= 256 || has('gui_running')
   syntax on
-  colorscheme BusyBee
+  colorscheme molokai
 endif
 
 " pathogen is a plugin for managing plugins as bundles
@@ -53,8 +51,27 @@ set autoread            " auto read in files that have changed underneath
 set shellcmdflag=-lc  " set the ! shell to be a login shell to get at functions and aliases
 
 " settings requiring the latest vim
-if version >= 703
-  set colorcolumn=80    " highlight the 80th column
-  highlight ColorColumn ctermbg=black guibg=black
-  set listchars=nbsp:¶,eol:¬,tab:>-,extends:»,precedes:«,trail:. " characters to use for 'specical' characters and non-printables
-endif
+"if version >= 703
+"  set colorcolumn=80    " highlight the 80th column
+"  highlight ColorColumn ctermbg=black guibg=black
+"  set listchars=nbsp:¶,eol:¬,tab:>-,extends:»,precedes:«,trail:. " characters to use for 'specical' characters and non-printables
+"endif
+
+"====[ Make the 81st column"standout"]==========================================
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+"====[ Make tabs, trailing whitespace, and non-breaking spaces visible"]========
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
+nnoremap <silent> n   n:call HLNext(0.1)<cr>
+nnoremap <silent> N   N:call HLNext(0.1)<cr>
+
+function! HLNext (blinktime)
+  set invcursorline
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  set invcursorline
+  redraw
+endfunction
