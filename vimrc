@@ -7,7 +7,7 @@ if (&term == 'xterm' || &term =~? '^screen')
   let g:CSApprox_konsole = 1
 endif
 
-" set syntax highlighting if we have color or gui 
+" set syntax highlighting if we have color or gui
 if &t_Co >= 256 || has('gui_running')
   syntax on
   colorscheme molokai
@@ -17,7 +17,7 @@ endif
 filetype off
 call pathogen#runtime_append_all_bundles()
 " generate helptag documentation for any existing bundles
-call pathogen#helptags()  
+call pathogen#helptags()
 
 " enable filetype and plugins
 filetype on
@@ -50,13 +50,6 @@ set noincsearch   " move curser as you type search terms
 set autoread            " auto read in files that have changed underneath
 set shellcmdflag=-lc  " set the ! shell to be a login shell to get at functions and aliases
 
-" settings requiring the latest vim
-"if version >= 703
-"  set colorcolumn=80    " highlight the 80th column
-"  highlight ColorColumn ctermbg=black guibg=black
-"  set listchars=nbsp:¶,eol:¬,tab:>-,extends:»,precedes:«,trail:. " characters to use for 'specical' characters and non-printables
-"endif
-
 "====[ Make the 81st column"standout"]==========================================
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
@@ -65,6 +58,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
+"====[ Highlight the entire line when jumping through matches"]=================
 nnoremap <silent> n   n:call HLNext(0.1)<cr>
 nnoremap <silent> N   N:call HLNext(0.1)<cr>
 
@@ -75,3 +69,10 @@ function! HLNext (blinktime)
   set invcursorline
   redraw
 endfunction
+
+"====[ Swap v and CTRL-V, because Block mode is more useful that Visual mode"]==
+nnoremap    v   <C-V>
+nnoremap <C-V>     v
+
+vnoremap    v   <C-V>
+vnoremap <C-V>     v
