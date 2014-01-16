@@ -25,6 +25,8 @@ filetype indent on
 filetype plugin on
 
 " set options here
+set number
+set pastetoggle=<F8>
 set ai           " auto indend
 set si           " smart indent
 set ff=unix      " file format unix dammit
@@ -51,8 +53,10 @@ set autoread            " auto read in files that have changed underneath
 set shellcmdflag=-lc  " set the ! shell to be a login shell to get at functions and aliases
 
 "====[ Make the 81st column"standout"]==========================================
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(120,999),",")
+highlight ColorColumn ctermbg=232 guibg=#2c2d27
+"call matchadd('ColorColumn', '\%81v', 100)
 
 "====[ Make tabs, trailing whitespace, and non-breaking spaces visible"]========
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
