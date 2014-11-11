@@ -19,3 +19,9 @@
 [submodule "bundle/vim-json"]
 	path = bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
+[submodule "bundle/vim-vroom"]
+	path = bundle/vim-vroom
+	url = git@github.com:skalnik/vim-vroom.git
+[submodule "bundle/vimux"]
+	path = bundle/vimux
+	url = git@github.com:benmills/vimux.git
