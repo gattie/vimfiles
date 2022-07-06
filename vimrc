@@ -52,6 +52,7 @@ set hlsearch    " highlight search on by default
 set noincsearch   " move curser as you type search terms
 set autoread            " auto read in files that have changed underneath
 set shellcmdflag=-lc  " set the ! shell to be a login shell to get at functions and aliases
+set cursorline
 
 "====[ Make the 81st column"standout"]==========================================
 let &colorcolumn=join(range(81,999),",")
@@ -81,3 +82,6 @@ nnoremap <C-V>     v
 
 vnoremap    v   <C-V>
 vnoremap <C-V>     v
+
+"====[ shortcuts ]==============================================================
+nmap =j :%!python -m json.tool<CR>
